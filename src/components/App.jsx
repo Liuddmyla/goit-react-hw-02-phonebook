@@ -32,7 +32,7 @@ class App extends React.Component {
     return (
       <div>        
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandler} />
+        <ContactForm onSubmit={this.formSubmitHandler} contacts={this.state.contacts} />
 
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} filterChange={this.filterChange} />

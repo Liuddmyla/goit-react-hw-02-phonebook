@@ -14,18 +14,22 @@ handleChange = event => {
   this.setState({ 
     [event.currentTarget.name]: event.currentTarget.value,      
   });
-}
+  }
     
 handleSubmit = event => {
-  event.preventDefault();  
-
-  const objName = {
-    name: event.currentTarget.elements.name.value,
-    id: event.currentTarget.elements.name.id, 
-    number: event.currentTarget.elements.number.value,
-  }   
-    
-  this.props.onSubmit(objName);
+  event.preventDefault(); 
+  
+  // this.props.contacts.forEach(el => {
+  //   if (event.currentTarget.elements.name.value === el.name) {     
+  //     alert(`${event.currentTarget.elements.name.value} is already in contacts`);
+  //     return;
+  //   }   
+  // }) 
+ 
+  this.props.onSubmit({
+    ...this.state,
+    id: nanoid()
+  });
     
   this.reset();
 }
