@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import css from './Filter.module.css';
 
 export const Filter = ({ filter, filterChange }) => {
     return (
         <>
-        <p>Find contacts by name</p>
+        <p className={css['text-filter']}>Find contacts by name</p>
         <input
           type="text"
           name="name"
@@ -12,6 +13,7 @@ export const Filter = ({ filter, filterChange }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           onChange={filterChange}
+          className={css['input-filter']}
         /> 
         </>
     )
