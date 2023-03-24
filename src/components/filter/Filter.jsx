@@ -1,4 +1,6 @@
-export const Filter = ({filter, filterChange}) => {
+import PropTypes from 'prop-types';
+
+export const Filter = ({ filter, filterChange }) => {
     return (
         <>
         <p>Find contacts by name</p>
@@ -13,4 +15,9 @@ export const Filter = ({filter, filterChange}) => {
         /> 
         </>
     )
+}
+
+Filter.propTypes = {
+    filter: PropTypes.string.isRequired,
+    filterChange: PropTypes.func.isRequired,   
 }

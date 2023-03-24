@@ -18,26 +18,39 @@ class App extends React.Component {
     const normalizedFilter = this.state.filter.toLowerCase();
 
     return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
-  }  
+  } 
+
+  searchName = (newName) => {
+    return this.state.contacts.some(contact => contact.name === newName);
+  }
   
-  formSubmitHandler = data => {
-    this.setState(prevState => {
-      return { contacts: [data, ...prevState.contacts] }
+  formSubmitHandler = data => { 
+    if (this.searchName(data.name)) {
+      alert(`${data.name} is already in contacts`); 
+      return;
+    }   
+    
+   this.setState(prevState => {     
+      return { contacts: [data, ...prevState.contacts] }      
     }); 
+  }
+
+  deleteContact = (e) => {        
+    this.setState({ contacts: this.state.contacts.filter((contact) => contact.id !== e.currentTarget.id) });
   }
 
   render() {
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <div>        
+      <div className='box'>        
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} contacts={this.state.contacts} />
 
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} filterChange={this.filterChange} />
         
-        <ContactList visibleContacts={visibleContacts}/>           
+        <ContactList visibleContacts={visibleContacts} deleteContact={this.deleteContact} />           
       </div>
     );
   }  
