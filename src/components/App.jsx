@@ -21,7 +21,7 @@ class App extends React.Component {
   } 
 
   searchName = (newName) => {
-    return this.state.contacts.some(contact => contact.name === newName);
+    return this.state.contacts.some(contact => contact.name.toLowerCase() === newName.toLowerCase());
   }
   
   formSubmitHandler = data => { 
@@ -45,7 +45,7 @@ class App extends React.Component {
     return (
       <div className='box'>        
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandler} contacts={this.state.contacts} />
+        <ContactForm onSubmit={this.formSubmitHandler} />
 
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} filterChange={this.filterChange} />

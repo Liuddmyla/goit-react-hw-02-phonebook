@@ -76,6 +76,5 @@ render() {
 export default ContactForm;
 
 ContactForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    contacts: PropTypes.array.isRequired,    
+    onSubmit: PropTypes.func.isRequired,      
 }
